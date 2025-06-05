@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple_Recipe_Card</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Georgia', serif;
+            background-color: #fdf6e3;
+            padding: 20px;
+        }
+        .container{
+            max-width: 600px;
+            margin: 0 auto; /* We didn't add top-bottom margins, but keeping left-right margins as auto aligns this container in the center */
+            background-color: white;
+            border-radius:15px;
+            overflow: hidden; /* Ensure image doesn't overflow rounded corners */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header{
+            height: 250px   ;
+            background-color: #d4a574;
+            display: flex; /* Turns this element into a flex container. This is the key to centering the text inside. Flex makes positioning child elements much easier */
+            align-items: center; /* Vertically centers the content inside the flex container. Works with display: flex to center things on the cross-axis (vertical) */
+            justify-content: center; /* Horizontally centers the content inside the flex container. Works with display: flex to center things on the main-axis (horizontal) */
+            color: white;
+            font-size: 24px;
+            background-image: url('Cookie_Template.jpg');
+            background-size: cover;
+            position: relative;
+        }
+        main{
+            padding: 30px;
+        }
+        main h1{
+            font-size: 28px;
+            text-align: center;
+            color:#8b4513;
+            margin-bottom: 10px;
+        }
+        .recipe-meta{
+            display: flex;
+            justify-content: space-around;
+            background-color: #f9f2e7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .meta-item{
+            text-align: center;
+        }
+        .meta-label{
+            font-weight: bold;
+            color: #8b4513;
+            display: block; /* Here, we could have used display: flex and flex-direction: column (in meta-item) instead of display: block (in meta-label), but display: block makes only this element behave like a block but flex would make the element a container that arranges it children vertically. Display: block is for simple vertical stacking and for single that need to take full width. Flex has more features (alignment like centering, spacing or when we have flexible sizing of children or there are multiple child elements to arrange) */
+        }
+        .meta-value{
+            color: #5d4037;
+        }
+        .section-title{
+            font-size: 20px;
+            color: #8b4513;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #d4a574;
+            padding-bottom: 5px;
+        }
+        main ul{
+            list-style-type: none;
+        }
+        main ul li{
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+        main ul li:before{
+            content:"🥄 ";
+        }
+        main ol{
+            counter-reset: step-counter;
+            list-style-type: none;
+        }
+        main ol li{
+            counter-increment: step-counter;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        main ol li:before{
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #d4a574;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .pro-tip{
+            background-color: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #4caf50;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+        .pro-tip h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            🍪 Recipe Image Placeholder 🍪 <!-- Add emojis by pressing windows + ; -->
+        </header>
+        <main>
+            <h1>Classic Chocolate Chip Cookies</h1>
+            <div class="recipe-meta">
+                <div class="meta-item">
+                    <span class="meta-label">Prep Time</span>
+                    <span class="meta-value">15 mins</span> <!-- Here we could have used div instead of span (although div are block elements, so we would not have had to use display: block to display the spans vertically) but we used span because span in a small piece of inline content whereas div is a division/section of content. Also, now it's easy to switch between inline/block--> 
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Cook Time</span>
+                    <span class="meta-value">12 mins</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Servings</span>
+                    <span class="meta-value">24 cookies</span>
+                </div>
+            </div>
+            <h3 class="section-title">Ingredients</h3>
+            <ul>
+                <li>2 1/4 cups all-purpose flour</li>
+                <li>1 tsp baking soda</li>
+                <li>1 tsp salt</li>
+                <li>1 cup butter, softened</li>
+                <li>3/4 cup granulated sugar</li>
+                <li>3/4 cup brown sugar, packed</li>
+                <li>2 large eggs</li>
+                <li>2 tsp vanilla extract</li>
+                <li>2 cups chocolate chips</li>
+            </ul>
+            <h3 class="section-title">Instructions</h3>
+            <ol>
+                <li>Preheat oven to 372&deg;F (190&deg;C).</li>
+                <li>In a medium bowl, whisk together flour, baking soda, and salt.</li>
+                <li>In a large bowl, cream together butter and both sugars until light and fluffy.</li>
+                <li>Beat in eggs one at a time, then add vanilla extract.</li>
+                <li>Gradually mix in the flour mixture until just combined.</li>
+                <li>Stir in chocolate chips.</li>
+                <li>Drop rounded tablespoons of dough onto ungreased baking sheets.</li>
+                <li>Bake for 9-11 minutes until golden brown around edges.</li>
+                <li>Cool on baking sheet for 2 minutes, then transfer to wire rack.</li>
+            </ol>
+            <div class="pro-tip">
+                <h3>💡 Pro Tips</h3>
+                <p>For extra chewy cookies, slightly underbake them. For crispier cookies, bake for an additional 1-2 minutes until golden brown all over.</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
